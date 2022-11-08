@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Todo-List</title>
+    <link rel="shortcut icon" href="download-removebg-preview.png" type="image/x-icon">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+   *{
+    font-family: Nunito, sans-serif;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    text-decoration: none;
+    transition: all 0.2s linear 0s;
+}
+
+  body{
+    font-size: .9rem;
+    background: linear-gradient(to right, rgb(104, 54, 138), rgb(178, 118, 59));
+    padding-bottom:100px ;
+    background-repeat: no-repeat;
+    height:100rem;
+  }
+  .fas{
+    width: 2rem;
+    height: 2rem;
+    margin: 2%;
+   
+    background-color: rgb(49, 3, 3);
+    color: white;
+  }
+  .line{
+    text-decoration: line-through;
+  }
+  .fa{
+    width: 2rem;
+    height: 2rem;
+    margin: 2%;
+    margin-left: -1%;
+    background-color: green;
+    color: white;
+  }
+  .container{
+    padding: 20px;
+  }
+  .input{
+    display: flex;
+    
+  }
+ input{
+  padding: 10px;
+  margin-bottom: 20px;
+ }
+ button{
+  width: 3rem;
+  height: 2.2rem;
+  cursor: pointer;
+ }
+ h1{
+  text-align: center  ;
+ }
+
+  li{
+    
+    display: flex;
+    position: relative;
+   margin-bottom: 5px;
+   flex-wrap: nowrap;
+    
+    
+  }
+  p{
+    border: 2px solid black;
+    background: transparent;
+    padding: 20px;
+    flex-wrap: wrap; 
+    border-radius: 10px;
+    width: 90%;
+  
+    
+  }
+  .slide{
+    animation: slide .8s linear forwards;
+
+  }
+
+  @keyframes slide {
+    from{
+      left: 0;
+      opacity: 1;
+    }
+    to{
+      opacity: 0;
+      left: -200px;
+      display: none;
+      visibility: collapse;
+    }
+  }
+@media (min-width:900px) {
+   body{
+    font-size: 130%;
+   }
+   input{
+    width: 90%;
+    height: 3rem;
+    font-size: 80%;
+   }
+   .input button{
+    font-size: 100%;
+    width: 40%;
+    height: 3rem;
+   }
+}
+@media (max-width:600px) {
+ 
+   .fas, .fa{
+   margin-top: 7%;
+   }
+   input{
+    width: 90%;
+    height: 3rem;
+    font-size: 80%;
+   }
+   .input button{
+    font-size: 100%;
+    width: 40%;
+    height: 3rem;
+   }
+}
+</style>
+<body>
+  
+   <div class="container">
+    <h1>Todo-List</h1>
+    <div class="input">
+    <input class="input" type="text" id="data" name="data">
+    <button type="submit" id="addTodo">add</button>
+    </div>
+     <div id="todoCont">
+     </div> 
+  </div>     
+<script>
+  let mow = document.getElementById('mow')
+  let data = document.getElementById('data')
+  let addTodo = document.getElementById('addTodo')
+  let todoCont = document.getElementById('todoCont')
+    
+  addTodo.addEventListener('click',function(){
+   let paragraph = document.createElement("p")
+   let btn = document.createElement("button")
+   let btn2 = document.createElement("button")
+    btn.classList.add("fas")
+    btn2.classList.add("fa")
+    btn2.classList.add("fa-check")
+    btn.classList.add("fa-times")
+
+   let allCont = document.createElement("li")
+    paragraph.innerText = data.value
+    todoCont.appendChild(allCont)
+    allCont.appendChild(paragraph)
+    allCont.appendChild(btn)
+    allCont.appendChild(btn2)
+
+
+    btn.addEventListener('click',function(){
+      paragraph.classList.add("line")
+      allCont.classList.add("slide")
+      setTimeout(function(){
+       allCont.remove();
+      btn.remove()
+      }, 1000)
+   
+  })
+  
+  btn2.addEventListener('click',function(){
+
+    //  btn2.classList.toggle("fa-minus");
+      paragraph.classList.add("line")
+      btn2.classList.remove("fa-check")
+      btn2.classList.add("fa-minus")
+      if ( btn2.classList.remove("fa-check")) {
+        paragraph.classList.remove("line")
+      }
+  })
+ 
+//   let btn3 = document.querySelectorAll(".fa-minus")
+//   btn3.addEventListener('click',function(){
+//   console.log("Why now")
+
+//   paragraph.classList.remove("line")
+//   btn3.classList.remove("fa-minus")
+//   btn3.classList.add("fa-check")
+// })
+ })
+  
+
+  
+  
+  // function act(event) {
+  //    for (let i = 0; i < 8; i++) {
+  //     const element = array[i];
+      
+  //    }
+  //   event.preventDefault();
+  // let data = document.getElementById("data")
+  //  var dataValue = data.value 
+  //  var st = document.querySelector(".counter")
+   
+  //   console.log(dataValue);
+
+  // }
+
+  
+
+   
+</script>
+</body>
+</html>
