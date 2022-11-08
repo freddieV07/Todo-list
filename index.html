@@ -171,7 +171,7 @@
     allCont.appendChild(btn)
     allCont.appendChild(btn2)
 
-
+    data.value = " "
     btn.addEventListener('click',function(){
       paragraph.classList.add("line")
       allCont.classList.add("slide")
@@ -183,15 +183,17 @@
   })
   
   btn2.addEventListener('click',function(){
-
-    //  btn2.classList.toggle("fa-minus");
       paragraph.classList.add("line")
       btn2.classList.remove("fa-check")
       btn2.classList.add("fa-minus")
-      if ( btn2.classList.remove("fa-check")) {
-        paragraph.classList.remove("line")
-      }
+   
   })
+   btn2.addEventListener('dblclick',function(){
+  paragraph.classList.remove("line")
+   btn2.classList.add("fa-check")
+   btn2.classList.remove("fa-minus")
+  
+})
  
 //   let btn3 = document.querySelectorAll(".fa-minus")
 //   btn3.addEventListener('click',function(){
